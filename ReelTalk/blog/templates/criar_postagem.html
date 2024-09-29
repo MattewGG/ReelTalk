@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar postagem</title>
+</head>
+<body>
+    <h1>Criar Review</h1>
+    <form method="POST">
+        <input type="text" name="titulo" placeholder="Título do filme" required>
+        <textarea name="review" placeholder="Review" required></textarea>
+        <label for="nota">Nota</label><input type="range" id="nota" name="nota" min="0" max="5" list="values" value="0"/>
+        <datalist id="values">
+            <option value="0" label="0"></option>
+            <option value="1" label="1"></option>
+            <option value="2" label="2"></option>
+            <option value="3" label="3"></option>
+            <option value="4" label="4"></option>
+            <option value="5" label="5"></option>
+          </datalist>
+        <button type="submit">Postar Review</button>
+    </form>
+</body>
+
+</html>

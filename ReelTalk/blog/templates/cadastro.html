@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+<body>
+    <h1>Registro</h1>
+    <form method="POST" action="/cadastro" novalidate>
+        {{ formulario.hidden_tag() }}
+    
+        <!-- Campo Nome -->
+        <div class="mb-3">
+            <label for="nome" class="form-label">{{ formulario.nome.label }}</label>
+            {{ formulario.nome(class="form-control", id="nome") }}
+            {% if formulario.nome.errors %}
+                <div class="invalid-feedback d-block">
+                    <ul class="mb-0">
+                        {% for error in formulario.nome.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Campo Nome do Usuário -->
+        <div class="mb-3">
+            <label for="nome_usuario" class="form-label">{{ formulario.nome_usuario.label }}</label>
+            {{ formulario.nome_usuario(class="form-control", id="nome_usuario") }}
+            {% if formulario.nome_usuario.errors %}
+                <div class="invalid-feedback d-block">
+                    <ul class="mb-0">
+                        {% for error in formulario.nome_usuario.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Campo Senha -->
+        <div class="mb-3">
+            <label for="senha" class="form-label">{{ formulario.senha.label }}</label>
+            {{ formulario.senha(class="form-control", id="senha") }}
+            {% if formulario.senha.errors %}
+                <div class="invalid-feedback d-block">
+                    <ul class="mb-0">
+                        {% for error in formulario.senha.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Campo Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">{{ formulario.email.label }}</label>
+            {{ formulario.email(class="form-control", id="email") }}
+            {% if formulario.email.errors %}
+                <div class="invalid-feedback d-block">
+                    <ul class="mb-0">
+                        {% for error in formulario.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Campo Data de Nascimento (Niver) -->
+        <div class="mb-3">
+            <label for="niver" class="form-label">{{ formulario.niver.label }}</label>
+            {{ formulario.niver(class="form-control", id="niver") }}
+            {% if formulario.niver.errors %}
+                <div class="invalid-feedback d-block">
+                    <ul class="mb-0">
+                        {% for error in formulario.niver.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Botão Enviar -->
+        <div class="mt-4">
+            {{ formulario.enviar(class="btn btn-primary") }}
+        </div>
+    </form>
+    
+</body>
+</html>
+
+

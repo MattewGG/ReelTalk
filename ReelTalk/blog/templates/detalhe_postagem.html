@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ postagem['titulo'] }}</title>
+</head>
+<body>
+    <h1>{{ postagem['titulo'] }}</h1>
+    <p>{{ postagem['review'] }}</p>
+    <p>Nota: {{ postagem['nota'] }}</p>
+    {% if postagem['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+        <a href="{{ url_for('excluir_postagem', postagem_id=postagem['id']) }}">Excluir postagem</a>
+    {% endif %}
+    
+    <h2>Comentários</h2>
+    <ul>
+        {% for comentario in comentarios %}
+            <li>
+                {{ comentario['conteudo'] }}
+                {% if comentario['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+                    <a href="{{ url_for('excluir_comentario', comentario_id=comentario['id']) }}">Excluir</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Adicione um comentário</h2>
+    <form method="POST">
+        <textarea name="conteudo" placeholder="Adicione um comentário" required></textarea>
+        <button type="submit">Comentar</button>
+    </form>
+</body>
+</html>

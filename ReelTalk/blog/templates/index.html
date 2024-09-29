@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>Blog</h1>
+    {% if 'usuario_id' in session %}
+        <p>Olá, {{ session['nome_usuario'] }}! Bem-vindo(a) de volta!</p>
+        <a href="{{ url_for('logout') }}">Sair</a>
+        <a href="{{ url_for('criar_postagem') }}">Criar postagem</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Conectar</a>
+        <a href="{{ url_for('cadastro') }}">Registrar</a>
+    {% endif %}
+    
+    <h2>Reviews</h2>
+    <ul>
+        {% for postagem in postagens %}
+            <li>
+                <a href="{{ url_for('detalhe_postagem', postagem_id=postagem['id']) }}">{{ postagem['titulo'] }}</a>
+                {% if postagem['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+                    <a href="{{ url_for('excluir_postagem', postagem_id=postagem['id']) }}">Excluir</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
